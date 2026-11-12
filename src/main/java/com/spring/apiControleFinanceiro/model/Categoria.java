@@ -18,9 +18,6 @@ public class Categoria {
 	
 	private String nome;
 	
-	@OneToMany(mappedBy = "categoria")
-	private List<Transacao> transacoes;
-	
 	public Categoria() {}
 	
 	public Categoria(Long id, String nome) {
@@ -42,13 +39,5 @@ public class Categoria {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public List<Transacao> getTransacoes() {
-		return transacoes;
-	}
-
-	public void setTransacoes(List<Transacao> transacoes) {
-		this.transacoes = transacoes;
 	}
 }

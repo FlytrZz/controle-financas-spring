@@ -28,7 +28,7 @@ public class Transacao {
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	private Categoria categoria;
 	
 	public Transacao() {}
