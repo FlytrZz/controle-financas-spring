@@ -24,17 +24,17 @@ public class CategoriaService {
 		if(categoria.)
 	}
 
-	public void criarCategoria(CategoriaDTO dto) {
+	public Categoria criarCategoria(CategoriaDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void atualizarCategoria(Long id, CategoriaDTO dto) {
+	public Categoria atualizarCategoria(Long id, CategoriaDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void apagarCategoria() {
+	public void apagarCategoria(Long id) {
 		// TODO Auto-generated method stub
 		
 	}
