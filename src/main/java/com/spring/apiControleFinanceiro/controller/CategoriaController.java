@@ -45,7 +45,7 @@ public class CategoriaController {
 	@PutMapping("/{id}")
 	public ResponseEntity<Categoria> atualizar(@PathVariable("id") Long id, @RequestBody @Valid CategoriaDTO dto) {
 		return ResponseEntity.ok(service.atualizarCategoria(id, dto));
-	}
+	}	
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> remover(@PathVariable("id") Long id) {
