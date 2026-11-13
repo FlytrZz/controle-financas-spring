@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.apiControleFinanceiro.DTO.CategoriaDTO;
+import com.spring.apiControleFinanceiro.exception.RecursoNaoEncontradoException;
 import com.spring.apiControleFinanceiro.model.Categoria;
 import com.spring.apiControleFinanceiro.repository.CategoriaRepository;
 
@@ -20,22 +21,22 @@ public class CategoriaService {
 	}
 
 	public Categoria buscarPorId(Long id) {
-		Categoria categoria = repository.findById(id);
-		if(categoria.)
+		return repository.findById(id).orElseThrow(() -> new RecursoNaoEncontradoException("Categoria inexistente!"));
 	}
 
 	public Categoria criarCategoria(CategoriaDTO dto) {
-		// TODO Auto-generated method stub
-		
+		Categoria categoria = new Categoria(dto.nome());
+		return repository.save(categoria);
 	}
 
 	public Categoria atualizarCategoria(Long id, CategoriaDTO dto) {
-		// TODO Auto-generated method stub
-		
+		Categoria categoria = buscarPorId(id);
+		categoria.setNome(dto.nome());
+		return repository.save(categoria);
 	}
 
 	public void apagarCategoria(Long id) {
-		// TODO Auto-generated method stub
-		
+		Categoria categoria = buscarPorId(id);
+		repository.delete(categoria);
 	}
 }
