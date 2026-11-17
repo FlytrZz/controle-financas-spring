@@ -178,7 +178,7 @@ class TransacaoControllerTest {
 	@Test
 	void testar204ParaRemoverTransacao() throws Exception {
 		//ARRANGE
-		doNothing().when(service).removerTransacao(transacao.getId());
+		doNothing().when(service).apagarTransacao(transacao.getId());
 		
 		//ACT + ASSERT
 		mvc.perform(delete("/v1/transacoes/{id}", transacao.getId()))
@@ -188,7 +188,7 @@ class TransacaoControllerTest {
 	@Test
 	void testar404ParaRemoverTransacao() throws Exception {
 		//ARRANGE
-		doThrow(new RecursoNaoEncontradoException("Transação inexistente!")).when(service).removerTransacao(transacao.getId());
+		doThrow(new RecursoNaoEncontradoException("Transação inexistente!")).when(service).apagarTransacao(transacao.getId());
 		
 		//ACT + ASSERT
 		mvc.perform(delete("/v1/transacoes/{id}", transacao.getId()))

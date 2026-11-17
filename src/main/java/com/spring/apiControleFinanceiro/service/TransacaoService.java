@@ -46,7 +46,7 @@ public class TransacaoService {
 		
 	}
 
-	public void removerTransacao(Long id) {
+	public void apagarTransacao(Long id) {
 		Transacao transacao = buscarPorId(id);
 		repository.delete(transacao);
 	}
