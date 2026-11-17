@@ -49,7 +49,7 @@ public class TransacaoController {
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> remover(@PathVariable("id") Long id) {
-		service.removerTransacao(id);
+		service.apagarTransacao(id);
 		return ResponseEntity.noContent().build();
 	}
 }
