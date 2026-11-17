@@ -22,4 +22,10 @@ public class GlobalExceptionHandler {
 		ErroResposta erro = new ErroResposta(409,"Operação não permitida: Registro já em uso!",LocalDateTime.now());
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
 	}
+	
+	@ExceptionHandler(ConflitoException.class)
+	public ResponseEntity<ErroResposta> tratarConflito (ConflitoException ex) {
+		ErroResposta erro = new ErroResposta(409, ex.getMessage(), LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.CONFLICT).body(erro);
+	}
 }
