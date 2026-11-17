@@ -180,7 +180,7 @@ class TransacaoServiceTest {
 		when(repository.findById(transacao.getId())).thenReturn(Optional.of(transacao));
 		
 		//ACT
-		service.removerTransacao(transacao.getId());
+		service.apagarTransacao(transacao.getId());
 		
 		//ASSERT
 		verify(repository, times(1)).delete(transacao);
@@ -192,7 +192,7 @@ class TransacaoServiceTest {
 		when(repository.findById(transacao.getId())).thenReturn(Optional.empty());
 		
 		//ACT
-		Exception naoRemoveException = assertThrows(RecursoNaoEncontradoException.class, () -> service.removerTransacao(transacao.getId()));
+		Exception naoRemoveException = assertThrows(RecursoNaoEncontradoException.class, () -> service.apagarTransacao(transacao.getId()));
 		
 		//ASSERT
 		Assertions.assertEquals("Transação inexistente!", naoRemoveException.getMessage());
