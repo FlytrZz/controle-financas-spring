@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.apiControleFinanceiro.DTO.CategoriaDTO;
+import com.spring.apiControleFinanceiro.exception.ConflitoException;
 import com.spring.apiControleFinanceiro.exception.RecursoNaoEncontradoException;
 import com.spring.apiControleFinanceiro.model.Categoria;
 import com.spring.apiControleFinanceiro.repository.CategoriaRepository;
@@ -25,6 +26,9 @@ public class CategoriaService {
 	}
 
 	public Categoria criarCategoria(CategoriaDTO dto) {
+		if (repository.existsByNomeIgnoreCase(dto.nome())) {
+			throw new ConflitoException("Categoria já existente!");
+		}
 		Categoria categoria = new Categoria(dto.nome());
 		return repository.save(categoria);
 	}
